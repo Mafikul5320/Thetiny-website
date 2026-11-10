@@ -2,9 +2,16 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  color: #111827;
+  color: #1a1a1a;
   background-color: #ffffff;
   margin: 0;
   padding: 0;
 }
 
+.hero-gradient {
+  background: linear-gradient(135deg, #f8f9fc 0%, #eef0ff 100%);
+}
+
+.hero-card-shadow {
+  box-shadow: 0 4px 40px rgba(91, 33, 243, 0.1);
+}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
+import { Menu, X } from "lucide-react";
 import logoImg from "../assets/logo.png";
 
 export interface NavLinkItem {
@@ -28,7 +29,7 @@ export const Navber: React.FC<NavberProps> = ({ className = "" }) => {
           <img
             src={logoImg}
             alt="thetiny.site"
-            className="h-10 w-auto object-contain"
+            className="h-16 w-auto object-contain"
           />
         </Link>
 
@@ -73,15 +74,7 @@ export const Navber: React.FC<NavberProps> = ({ className = "" }) => {
           aria-label="Toggle Menu"
           aria-expanded={isOpen}
         >
-          {isOpen ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
