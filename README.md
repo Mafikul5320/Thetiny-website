@@ -1,75 +1,126 @@
-# React + TypeScript + Vite
+# thetiny.site — URL Shortener & Link Management Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive web application for **thetiny.site**, built with **React 19**, **TypeScript**, **Vite 8**, **React Router**, and **Tailwind CSS v4**. The interface features smooth scroll-triggered animations, animated stat counters, interactive QR code previews, a continuous testimonials marquee, and clean modular TypeScript components.
 
-Currently, two official plugins are available:
+**Live Demo:** [https://thetiny-website.vercel.app](https://thetiny-website.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Category | Technology |
+| --- | --- |
+| **Framework** | React `19.3.1` + TypeScript `~6.0.3` |
+| **Build Tool** | Vite `8.3.6` (`@vitejs/plugin-react`) |
+| **Styling** | Tailwind CSS `4.3.5` (`@tailwindcss/vite`) |
+| **Routing** | React Router `8.5.1` |
+| **Icons** | Lucide React `1.71.0` & React Icons (`fa6`) `5.7.0` |
+| **Animations** | React CountUp `6.5.3` + CSS Keyframes & `IntersectionObserver` |
+| **Linting** | ESLint `10.14.0` + `typescript-eslint` |
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features & Implemented Pages
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Home Page (`/`)
+- **Hero Section (`HeroSection.tsx`)** — Headline, trust badge, entrance fade-up animations, and CTA card linking to `/login` and `/register`.
+- **Slanted Stats Ribbon (`StatsSection.tsx`)** — Angled royal-purple (`-skew-y-2`) stats bar with scroll-triggered `AnimatedNumber` counters (`100K+` Links Created, `1M+` Total Clicks, `180+` Countries, `99.9%` Uptime).
+- **Most Popular Links (`PopularLinks.tsx`)** — Popular shortened URLs with animated click counts, one-click clipboard copy (`Copied!` feedback), and an interactive **QR Code modal**.
+- **Premium Features (`PremiumFeatures.tsx`)** — Feature checklist paired with an animated **Link Analytics Dashboard** featuring scroll-triggered click counters and shimmering progress bars.
+- **Pricing Section (`PricingSection.tsx`)** — Three pricing tiers (`FREE`, featured `PRO`, and `BUSINESS`) with smooth card-lift, glow, and button micro-interactions.
+- **Testimonials (`Testimonials.tsx`)** — Seamless infinite left-to-right marquee (`animate-marquee-ltr`) that pauses on hover and supports `prefers-reduced-motion`.
+- **Why Choose Us (`WhyChooseUs.tsx`)** — Six platform benefit cards with staggered `IntersectionObserver` entrance reveals and hover icon transitions.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### About Page (`/about`)
+- **Hero & Mission** — Company introduction, team showcase visual, and mission statement.
+- **Our Values** — Six core value cards (`Speed First`, `Trust & Safety`, `Global Reach`, `User-Centric`, `Community`, `Reliability`).
+- **The Team** — Team member showcase (`Nadim Majid`) with automatic initials fallback on image load errors.
+- **Our Story** — Five-step company timeline spanning `2021` to `2026`.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Not Found Page (`*`)
+- **404 Error Screen (`NotFound.tsx`)** — Displays the unmatched path (`thetiny.site{pathname}`), quick navigation buttons (**Back to Home** and **Go Back**), and broken/expired link recovery tips.
 
+### Shared Layout
+- **Navigation Bar (`Navber.tsx`)** — Fixed glassmorphic header with active route underlines and a responsive mobile menu drawer.
+- **Footer (`Footer.tsx`)** — Brand tagline, social links, contact info, and Product / Company / Legal links.
+
+---
+
+## Project Structure
+
+```text
+Thetiny-website/
+├── public/
+│   ├── favicon.png
+│   ├── favicon.svg
+│   ├── icons.svg
+│   └── logo.png
+├── src/
+│   ├── assets/
+│   │   ├── hero.png
+│   │   ├── logo.png
+│   │   ├── react.svg
+│   │   └── vite.svg
+│   ├── components/
+│   │   └── AnimatedNumber.tsx
+│   ├── Home/
+│   │   ├── HeroSection.tsx
+│   │   ├── Home.tsx
+│   │   ├── PopularLinks.tsx
+│   │   ├── PremiumFeatures.tsx
+│   │   ├── PricingSection.tsx
+│   │   ├── StatsSection.tsx
+│   │   ├── Testimonials.tsx
+│   │   └── WhyChooseUs.tsx
+│   ├── layouts/
+│   │   ├── Footer.tsx
+│   │   ├── MainLayout.tsx
+│   │   └── Navber.tsx
+│   ├── pages/
+│   │   ├── About.tsx
+│   │   └── NotFound.tsx
+│   ├── router/
+│   │   └── router.tsx
+│   ├── index.css
+│   └── main.tsx
+├── eslint.config.js
+├── index.html
+├── package.json
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Routes
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Path | Component | Description |
+| --- | --- | --- |
+| `/` | `Home` | Main landing page with all 7 showcase sections |
+| `/about` | `About` | Company overview, mission, values, team, and timeline |
+| `*` | `NotFound` | Custom 404 page inside `MainLayout` for unmatched routes |
 
+---
+
+## Getting Started
+
+### Prerequisites
+- **Node.js** (v20+ recommended)
+- **pnpm** (v10+ recommended)
+
+### Installation
+
+```bash
+pnpm install
 ```
+
+### Available Scripts
+
+| Command | Description |
+| --- | --- |
+| `pnpm dev` | Starts the Vite development server with HMR (`http://localhost:5173`) |
+| `pnpm run build` | Runs TypeScript type checking (`tsc -b`) and builds production assets into `dist/` |
+| `pnpm run lint` | Runs ESLint across the codebase |
+| `pnpm run preview` | Previews the production build locally |
